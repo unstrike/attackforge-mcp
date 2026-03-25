@@ -1,0 +1,19 @@
+[project]
+name = "attackforge-mcp"
+version = "0.1.0"
+description = "MCP server exposing the AttackForge Self-Service API to AI assistants"
+authors = [
+    { name = "unstrike", email = "forge@unstrike.cloud" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp>=1.26.0",
+]
+
+[project.scripts]
+attackforge-mcp = "attackforge_mcp:main"
+
+[build-system]
+requires = ["uv_build>=0.10.12,<0.11.0"]
+build-backend = "uv_build"
