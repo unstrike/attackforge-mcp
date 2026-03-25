@@ -7,16 +7,18 @@ An MCP server that connects AI assistants (Claude, etc.) to the
 
 ## vs. the official AttackForge MCP
 
-AttackForge publishes an official MCP server. Like this one, it wraps the
-SSAPI — translating API endpoints into MCP tools so an AI assistant can call
-them. The core approach is the same.
+AttackForge publishes an official MCP server. It exposes a limited subset of
+the SSAPI — specifically: `whoami`, `get_file`, `count_projects`,
+`count_vulnerabilities`, `count_writeups`, `find_affected_assets`,
+`find_projects`, `find_writeups`, `find_vulnerabilities`, and
+`get_field_structure`.
 
-This version adds a layer of **context efficiency** on top of that foundation,
-designed specifically for use inside long AI conversations:
+This server covers the **full SSAPI** and adds a layer of **context efficiency**
+on top, designed specifically for use inside long AI conversations:
 
 | | Official MCP | attackforge-mcp |
 |---|---|---|
-| API coverage | Full SSAPI | Full SSAPI |
+| API coverage | 10 endpoints | Full SSAPI |
 | Response passthrough | Raw API JSON | Slimmed (see below) |
 | HTML fields | Returned | Stripped globally (−40–60% size) |
 | List responses | Full objects | Summary projection + `total`/`has_more` envelope |
@@ -42,7 +44,7 @@ possible without losing information.
 ### Install
 
 ```bash
-git clone <repo>
+git clone https://github.com/unstrike/attackforge-mcp
 cd attackforge-mcp
 uv sync
 ```
